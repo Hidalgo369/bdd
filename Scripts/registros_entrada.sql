@@ -27,4 +27,8 @@ values (9, '1000000009', '2024-09-02', '08:20:00')
 insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora)
 values (10, '1000000010', '2024-09-02', '08:15:00')
 
+select cedula_empleado,fecha,hora from registros_entrada
 select * from registros_entrada
+Where hora between '07:00' and '14:00'
+select * from registros_entrada
+Where hora>'08:00'

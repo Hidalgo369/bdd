@@ -18,3 +18,8 @@ insert into videojuegos (codigo, nombre, descripcion, valoracion)
 values (5, 'Minecraft', 'Juego de construcción y supervivencia con infinitas posibilidades creativas', 8)
 
 select * from videojuegos
+where nombre like 'C%'
+select * from videojuegos
+where valoracion between 9 and 10
+select * from videojuegos
+where descripcion is null

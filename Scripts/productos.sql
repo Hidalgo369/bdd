@@ -19,10 +19,24 @@ insert into productos(codigo,nombre,descripcion,precio,stock)
 values (5, 'Impresora', 'Impresora multifunción con conexión WiFi', 120.00, 20)
 
 insert into productos (codigo, nombre, precio, stock)
-values (6, 'Tablet', 320.00, 25);
+values (6, 'Tablet', 320.00, 25)
 insert into productos (codigo, nombre, precio, stock)
-values (7, 'Auriculares', 50.00, 40);
+values (7, 'Auriculares', 50.00, 40)
 insert into productos (codigo, nombre, precio, stock)
-values (8, 'Cámara Web', 75.99, 30);
+values (8, 'Cámara Web', 75.99, 30)
 
+insert into productos (codigo, nombre, precio, stock)
+values (9, 'QR Generador', 1.99, 10)
+insert into productos (codigo, nombre, precio, stock)
+values (10, 'Pendrive', 2.00, 3)
+insert into productos (codigo, nombre, precio, stock)
+values (11, 'CD', 2.50, 8)
+insert into productos (codigo, nombre, precio, stock)
+values (12, 'Lapiz', 3.00, 2)
+
+select * from productos 
+where nombre like 'Q%'
 select * from productos
+where descripcion is null
+select * from productos
+where precio between '2' and '3'

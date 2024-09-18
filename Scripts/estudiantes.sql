@@ -24,4 +24,8 @@ values ('1000000007', 'David', 'Morales', 'david.morales@example.com', '1993-03-
 insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento)
 values ('1000000008', 'Laura', 'Torres', 'laura.torres@example.com', '1999-07-18')
 
-select * from estudiantes
+select nombre,cedula from estudiantes
+select nombre,cedula from estudiantes
+Where cedula like '17%'
+select nombre,apellido from estudiantes
+where nombre like 'A%'
