@@ -35,3 +35,8 @@ select * from transacciones
 where monto between '200' and '2000'
 select codigo,monto,tipo,fecha from transacciones
 where fecha is not null
+
+update transacciones set tipo='T'
+where monto>'100' and monto<'500'
+and fecha between '01/09/2024' and '30/09/2024'
+and hora between '14:00' and '20:00'
