@@ -46,3 +46,24 @@ where descripcion is null
 
 delete from productos
 where descripcion is null
+
+insert into productos(codigo,nombre,descripcion,precio,stock) 
+values (21,'Jabón','Lava todo',3.50,10);
+insert into productos(codigo,nombre,descripcion,precio,stock) 
+values (22,'Shampoo','Savital',2.50,20);
+insert into productos(codigo,nombre,descripcion,precio,stock) 
+values (23,'Deja','Deja',1.50,30);
+insert into productos(codigo,nombre,descripcion,precio,stock) 
+values (24,'Pasta dental','Fortident',3.0,40);
+insert into productos(codigo,nombre,descripcion,precio,stock) 
+values (25,'Cera','Cera de piso',2.50,50);
+insert into productos(codigo,nombre,precio,stock) 
+values (26,'Pan',1.50,50);
+insert into productos(codigo,nombre,precio,stock) 
+values (27,'Queso',5.50,60);
+insert into productos(codigo,nombre,precio,stock)
+values (28,'Leche',2.50,70);
+insert into productos(codigo,nombre,precio,stock)
+values (29,'Jamon',1.00,120);
+insert into productos(codigo,nombre,precio,stock)
+values (30,'Coca Cola',3.50,300);
