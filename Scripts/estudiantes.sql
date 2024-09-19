@@ -29,3 +29,6 @@ select nombre,cedula from estudiantes
 Where cedula like '17%'
 select nombre,apellido from estudiantes
 where nombre like 'A%'
+
+delete from estudiantes
+where cedula like '%05'

@@ -37,3 +37,6 @@ Where hora>'08:00'
 
 update registros_entrada set cedula_empleado='082345679'
 where fecha between '01/08/2024' and '31/08/2024'
+
+delete from registros_entrada
+where fecha between '01/06/2024' and '30/06/2024' 
