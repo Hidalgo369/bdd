@@ -53,3 +53,17 @@ insert into estudiantes (cedula,nombre,apellido,email,fecha_de_nacimiento)
 values (1235476809,'Anabel','Perlaza','WPerlaza18@gmail.com','12/04/2000');
 insert into estudiantes (cedula,nombre,apellido,email,fecha_de_nacimiento)
 values (1735476810,'Sofía','Jimenez','SofiJz22@gmail.com','22/01/2001');
+insert into estudiantes (cedula,nombre,apellido,email,fecha_de_nacimiento)
+values (3235476810,'Sofía','Jimenez','SofiJz22@gmail.com','22/01/2001');
+insert into estudiantes (cedula,nombre,apellido,email,fecha_de_nacimiento)
+values (3235476832,'Sofía','Jimenez','SofiJz22@gmail.com','22/01/2001');
+
+select nombre,apellido from estudiantes
+where (nombre like 'M%') 
+or (apellido like '%z')
+select nombre from estudiantes
+where (cedula like '%32%')
+and (cedula like '18%')
+select nombre,apellido from estudiantes
+where (cedula like '%06')
+or (cedula like '17%')

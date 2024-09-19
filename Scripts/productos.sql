@@ -67,3 +67,12 @@ insert into productos(codigo,nombre,precio,stock)
 values (29,'Jamon',1.00,120);
 insert into productos(codigo,nombre,precio,stock)
 values (30,'Coca Cola',3.50,300);
+
+select * from productos
+where (stock=10) and (precio<'10')
+select nombre,stock from productos
+where (nombre like 'M%' or nombre like '%m%')
+or (descripcion like '% %')
+select nombre from productos
+where (descripcion is null)
+or (stock=0)
