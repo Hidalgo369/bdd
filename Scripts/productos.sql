@@ -76,3 +76,49 @@ or (descripcion like '% %')
 select nombre from productos
 where (descripcion is null)
 or (stock=0)
+
+--EJERCICIO DE TIPOS DE RELACIONES
+create table ventas(
+	id_venta int not null,
+	codigo_producto int not null,
+	fecha_venta date not null,
+	cantidad int,
+	constraint ventas_pk primary key (id_venta),
+	constraint ventas_fk foreign key (codigo_producto) references productos (codigo) 
+)
+
+delete from productos
+
+insert into productos (codigo, nombre, descripcion, precio, stock) 
+values (1, 'Laptop', 'Laptop de 15 pulgadas con 16GB de RAM', 1200.00, 10);
+insert into productos (codigo, nombre, descripcion, precio, stock) 
+values (2, 'Teléfono', 'Teléfono inteligente con 128GB de almacenamiento', 800.50, 25);
+insert into productos (codigo, nombre, descripcion, precio, stock) 
+values (3, 'Tableta', 'Tableta de 10 pulgadas con stylus incluido', 300.00, 15);
+insert into productos (codigo, nombre, descripcion, precio, stock) 
+values (4, 'Auriculares', 'Auriculares inalámbricos con cancelación de ruido', 150.99, 50);
+insert into productos (codigo, nombre, descripcion, precio, stock) 
+values (5, 'Reloj inteligente', 'Reloj con monitoreo de salud y GPS', 250.75, 30);
+select * from productos
+
+insert into ventas (id_venta, codigo_producto, fecha_venta, cantidad) 
+values (1, 1, '2024-09-25', 2);  
+insert into ventas (id_venta, codigo_producto, fecha_venta, cantidad) 
+values (2, 2, '2024-09-26', 1); 
+insert into ventas (id_venta, codigo_producto, fecha_venta, cantidad) 
+values (3, 3, '2024-09-27', 3); 
+insert into ventas (id_venta, codigo_producto, fecha_venta, cantidad) 
+values (4, 4, '2024-09-28', 5);
+insert into ventas (id_venta, codigo_producto, fecha_venta, cantidad) 
+values (5, 5, '2024-09-29', 4);
+insert into ventas (id_venta, codigo_producto, fecha_venta, cantidad) 
+values (6, 1, '2024-09-30', 1);
+insert into ventas (id_venta, codigo_producto, fecha_venta, cantidad) 
+values (7, 2, '2024-10-01', 2);
+insert into ventas (id_venta, codigo_producto, fecha_venta, cantidad) 
+values (8, 3, '2024-10-02', 1);
+insert into ventas (id_venta, codigo_producto, fecha_venta, cantidad) 
+values (9, 4, '2024-10-03', 3);
+insert into ventas (id_venta, codigo_producto, fecha_venta, cantidad) 
+values (10, 5, '2024-10-04', 2);
+select * from ventas

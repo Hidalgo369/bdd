@@ -67,3 +67,61 @@ and (cedula like '18%')
 select nombre,apellido from estudiantes
 where (cedula like '%06')
 or (cedula like '17%')
+
+--EJERCICIO DE RELACIONES
+delete from estudiantes
+alter table estudiantes
+add column codigo_profesor int
+
+create table profesores(
+	codigo int not null,
+	nombre varchar(50) not null,
+	constraint profesores_pk primary key (codigo)
+)
+
+alter table estudiantes
+add constraint estudiantes_fk foreign key (codigo_profesor) references profesores(codigo)
+
+insert into profesores (codigo, nombre) 
+values (1, 'Ana Martínez');
+insert into profesores (codigo, nombre) 
+values (2, 'Luis Gómez');
+insert into profesores (codigo, nombre) 
+values (3, 'María Rodríguez');
+insert into profesores (codigo, nombre) 
+values (4, 'Carlos Pérez');
+insert into profesores (codigo, nombre) 
+values (5, 'Sofía Torres');
+insert into profesores (codigo, nombre) 
+values (6, 'Jorge Díaz');
+insert into profesores (codigo, nombre) 
+values (7, 'Laura Fernández');
+insert into profesores (codigo, nombre) 
+values (8, 'Pedro Ramírez');
+insert into profesores (codigo, nombre) 
+values (9, 'Carmen López');
+insert into profesores (codigo, nombre) 
+values (10, 'Diego Sánchez');
+select * from profesores
+
+insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
+values ('1234567890', 'Luis', 'Martínez', 'luis.martinez@example.com', '2000-01-15', 1);
+insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
+values ('2345678901', 'Ana', 'García', 'ana.garcia@example.com', '2001-02-20', 2);
+insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
+values ('3456789012', 'Carlos', 'López', 'carlos.lopez@example.com', '1999-03-25', 3);
+insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
+values ('4567890123', 'Sofía', 'Díaz', 'sofia.diaz@example.com', '2002-04-30', 4);
+insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
+values ('5678901234', 'Pedro', 'Ramírez', 'pedro.ramirez@example.com', '2003-05-10', 5);
+insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
+values ('6789012345', 'Carmen', 'Hernández', 'carmen.hernandez@example.com', '2000-06-15', 1);
+insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
+values ('7890123456', 'María', 'Sánchez', 'maria.sanchez@example.com', '2001-07-20', 2);
+insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
+values ('8901234567', 'Diego', 'Torres', 'diego.torres@example.com', '1998-08-25', 3);
+insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
+values ('9012345678', 'Laura', 'Fernández', 'laura.fernandez@example.com', '1997-09-30', 4);
+insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
+values ('0123456789', 'Jorge', 'González', 'jorge.gonzalez@example.com', '1996-10-05', 5);
+select * from estudiantes

@@ -72,3 +72,54 @@ and (hora between '08:00' and '12:00'))
 or ((fecha between '01/09/2024' and '30/09/2024')
 and (cedula_empleado like '08%')
 and (hora between '9:00' and '13:00'))
+
+--EJERCICIO DE RELACIONES
+delete from registros_entrada
+alter table registros_entrada
+add column codigo_empleado int not null
+
+create table empleado(
+	codigo_empleado int not null,
+	nombre varchar(25) not null,
+	fecha date not null,
+	hora time not null
+)
+
+alter table empleado
+add constraint empleado_pk primary key (codigo_empleado)
+alter table registros_entrada
+add constraint registros_entrada_fk foreign key (codigo_empleado) references empleado(codigo_empleado)
+
+insert into empleado (codigo_empleado, nombre, fecha, hora) 
+values (001, 'Ana Torres', '2024-09-01', '09:00:00');
+insert into empleado (codigo_empleado, nombre, fecha, hora) 
+values (002, 'Luis Pérez', '2024-09-02', '08:30:00');
+insert into empleado (codigo_empleado, nombre, fecha, hora) 
+values (003, 'Carmen Díaz', '2024-09-03', '10:15:00');
+insert into empleado (codigo_empleado, nombre, fecha, hora) 
+values (004, 'Jorge Ramírez', '2024-09-04', '11:00:00');
+insert into empleado (codigo_empleado, nombre, fecha, hora) 
+values (005, 'Sofía González', '2024-09-05', '09:45:00');
+select * from empleado
+
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
+(1, '1234567890', '2024-09-01', '09:05:00', 001);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
+(2, '2345678901', '2024-09-02', '08:35:00', 002);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
+(3, '3456789012', '2024-09-03', '10:20:00', 003);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
+(4, '4567890123', '2024-09-04', '11:10:00', 004);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
+(5, '5678901234', '2024-09-05', '09:50:00', 005);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
+(6, '1234567890', '2024-09-06', '09:02:00', 001);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
+(7, '2345678901', '2024-09-07', '08:33:00', 002);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
+(8, '3456789012', '2024-09-08', '10:10:00', 003);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
+(9, '4567890123', '2024-09-09', '11:05:00', 004);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
+(10, '5678901234', '2024-09-10', '09:40:00', 005);
+select * from registros_entrada

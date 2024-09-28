@@ -77,3 +77,36 @@ select * from transacciones
 where (codigo between 1 and 5)
 and (numero_cuenta between '22002' and '22004')
 and (fecha between '26/05/2024' and '29/05/2024')
+
+--EJERCICIO DE RELACIONES
+select * from transacciones
+
+create table banco(
+codigo_banco int,
+	codigo_transaccion int,
+	detalle varchar(100),
+	constraint banco_pk primary key (codigo_banco),
+	constraint banco_fg foreign key (codigo_transaccion) references transacciones(codigo)
+)
+
+insert into banco (codigo_banco, codigo_transaccion, detalle) 
+values (1, 0001, 'Apertura de cuenta'); 
+insert into banco (codigo_banco, codigo_transaccion, detalle) 
+values (2, 0002, 'Depósito en efectivo'); 
+insert into banco (codigo_banco, codigo_transaccion, detalle) 
+values (3, 0003, 'Retiro de cajero automático'); 
+insert into banco (codigo_banco, codigo_transaccion, detalle) 
+values (4, 0004, 'Transferencia entre cuentas'); 
+insert into banco (codigo_banco, codigo_transaccion, detalle) 
+values (5, 0005, 'Pago de servicios'); 
+insert into banco (codigo_banco, codigo_transaccion, detalle) 
+values (6, 0006, 'Cobro de cheque'); 
+insert into banco (codigo_banco, codigo_transaccion, detalle) 
+values (7, 0007, 'Consulta de saldo'); 
+insert into banco (codigo_banco, codigo_transaccion, detalle) 
+values (8, 0008, 'Cierre de cuenta'); 
+insert into banco (codigo_banco, codigo_transaccion, detalle) 
+values (9, 0009, 'Cambio de clave'); 
+insert into banco (codigo_banco, codigo_transaccion, detalle) 
+values (10, 0010, 'Solicitud de crédito'); 
+select * from banco

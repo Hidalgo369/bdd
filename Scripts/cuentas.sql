@@ -67,3 +67,54 @@ where (fecha_creacion between '19/09/2023' and '19/09/2024')
 select * from cuentas
 where (saldo='0')
 or (cedula_propietario like '%2')
+
+-- EJERCICIO DE TIPOS DE RELACIONES
+create table usuario(
+	cedula char(10) not null,
+	nombre varchar(25) not null,
+	apellido varchar(25) not null,
+	tipo_vuenta varchar(20),
+	limite_credito decimal(10,2),
+	constraint usuario_pk primary key(cedula)
+)
+
+delete from cuentas;
+alter table cuentas
+alter column cedula_propietario type char(10)
+alter table cuentas
+add constraint cuentas_fk foreign key (cedula_propietario) references usuario(cedula)
+
+insert into usuario (cedula, nombre, apellido, tipo_vuenta, limite_credito)
+values ('1750012345', 'Juan', 'Perez', 'Corriente', 5000.00);
+insert into usuario (cedula, nombre, apellido, tipo_vuenta, limite_credito)
+values ('1750023456', 'Maria', 'Gomez', 'Ahorros', 3000.00);
+insert into usuario (cedula, nombre, apellido, tipo_vuenta, limite_credito)
+values ('1750034567', 'Pedro', 'Lopez', 'Corriente', 4000.00);
+insert into usuario (cedula, nombre, apellido, tipo_vuenta, limite_credito)
+values ('1750045678', 'Ana', 'Martinez', 'Ahorros', 2500.00);
+insert into usuario (cedula, nombre, apellido, tipo_vuenta, limite_credito)
+values ('1750056789', 'Luis', 'Ortiz', 'Corriente', 3500.00);
+select * from usuario
+
+--Nuevos registros en la tabla cuentas aplicando la relación
+insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
+values ('10001', '1750012345', '2024-09-10', 1500.50);
+insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
+values ('10002', '1750023456', '2024-08-05', 300.75);
+insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
+values ('10003', '1750034567', '2024-06-20', 5000.00);
+insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
+values ('10004', '1750045678', '2024-05-05', 1200.30);
+insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
+values ('10005', '1750056789', '2024-07-20', 875.20);
+insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
+values ('10006', '1750012345', '2024-06-15', 950.00);
+insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
+values ('10007', '1750023456', '2024-03-06', 780.40);
+insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
+values ('10008', '1750034567', '2024-07-18', 6200.00);
+insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
+values ('10009', '1750045678', '2024-06-03', 3150.00);
+insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
+values ('10010', '1750056789', '2024-09-01', 450.75);
+select * from cuentas
