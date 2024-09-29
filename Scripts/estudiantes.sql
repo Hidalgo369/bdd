@@ -125,3 +125,11 @@ values ('9012345678', 'Laura', 'Fernández', 'laura.fernandez@example.com', '199
 insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
 values ('0123456789', 'Jorge', 'González', 'jorge.gonzalez@example.com', '1996-10-05', 5);
 select * from estudiantes
+
+--EJERCICIO DE CONSULTAS Y SUBCONSULTAS
+--CONSULTA: OBTENER EL CÓDIGO DE PROFESOR CON TODOS LOS NOMBRES Y APELLIDOS DE LOS ESTUDIANTES CUYO APELLIDO CONTIENE LA LETRA Ñ
+select profe.codigo, es.nombre, es.apellido from profesores profe, estudiantes es
+where (es.apellido like '%ñ%')
+--SUBCONSULTA: ESTUDIANTES CUYO CÓDIGO DE PROFESOR CORRESPONDE AL NOMBRE DE "FRANCISCO"
+select * from estudiantes es
+where (es.codigo_profesor = any(select profe.codigo from profesores profe where profe.nombre='Francisco'))

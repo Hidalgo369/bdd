@@ -20,6 +20,8 @@ insert into persona (cedula, nombre, apellido, estatura, fecha_nacimiento, hora_
 values ('4567890123', 'Sofía', 'Díaz', 1.70, '1995-04-15', '10:00:00', 2500.00, 0);
 insert into persona (cedula, nombre, apellido, estatura, fecha_nacimiento, hora_de_nacimiento, cantidad_ahorrada, numero_hijos) 
 values ('5678901234', 'Pedro', 'Ramírez', 1.78, '1988-05-25', '11:20:00', 8000.00, 2);
+update persona set nombre='Sean'
+where cedula='5678901234'
 select * from persona
 
 create table prestamo(
@@ -42,4 +44,14 @@ insert into prestamo (cedula, monto, fecha_prestamo, hora_prestamo, garante)
 values ('4567890123', 5000.00, '2024-09-04', '12:00:00', 'Pedro Ramírez');
 insert into prestamo (cedula, monto, fecha_prestamo, hora_prestamo, garante) 
 values ('5678901234', 20000.00, '2024-09-05', '13:30:00', 'Luis Martínez');
+update prestamo set monto=150
+where (cedula='5678901234')
 select * from prestamo
+
+--EJERCICIO DE CONSULTAS Y SUBCONSULTAS
+--CONSULTA: MOSTRAR CANTIDAD AHORRADA, MONTO, GARANTE DE PERSONAS CUYO PRESTAMO SEA ENTRE $100 Y $1000
+select per.cantidad_ahorrada, pres.monto, pres.garante from persona per, prestamo pres
+where (pres.monto between '100' and '1000')
+--SUBCONSULTA: DATOS DE LA PERSONA CUYA CEDULA SEA IGUAL A LA CEDULA DE NOMBRE "SEAN"
+select * from persona
+where nombre='Sean'

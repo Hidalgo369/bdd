@@ -78,7 +78,6 @@ create table usuario(
 	constraint usuario_pk primary key(cedula)
 )
 
-delete from cuentas;
 alter table cuentas
 alter column cedula_propietario type char(10)
 alter table cuentas
@@ -116,5 +115,13 @@ values ('10008', '1750034567', '2024-07-18', 6200.00);
 insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
 values ('10009', '1750045678', '2024-06-03', 3150.00);
 insert into cuentas (numero_cuenta, cedula_propietario, fecha_creacion, saldo)
-values ('10010', '1750056789', '2024-09-01', 450.75);
+values ('10011', '1750056789', '2023-09-01', 450.75);
 select * from cuentas
+
+--EJERCICIO DE CONSULTAS Y SUBCONSULTAS
+--CONSULTA: NÚMEROS DE CUENTAS Y NOMBRES DE USUARIO CUYOS SALDOS ESTÉN ENTRE $100 Y $1000
+select cu.numero_cuenta,cu.saldo, u.nombre from cuentas cu, usuario u
+where (cu.saldo between '100' and '1000')
+--SUBCONSULTA: DATOS DE CUENTAS Y USUARIOS DONDE LA FECHA DE CREACIÓN DE LA CUENTA ESTÁ ENTRE "2022-09-21" y "2023-09-21"
+select cu.numero_cuenta, cu.fecha_creacion, cu.saldo, u.cedula from cuentas cu, usuario u
+where (u.cedula = any(select cu.cedula_propietario from cuentas where cu.fecha_creacion between '2022-09-21' and '2023-09-21'))

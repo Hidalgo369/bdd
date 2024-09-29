@@ -122,3 +122,11 @@ values (9, 4, '2024-10-03', 3);
 insert into ventas (id_venta, codigo_producto, fecha_venta, cantidad) 
 values (10, 5, '2024-10-04', 2);
 select * from ventas
+
+--EJERCICIO DE CONSULTAS Y SUBCONSULTAS
+--CONSULTA: OBTENER EL NOMBRE, STOCK Y CANTIDAD DE PRODUCTOS Y VENTAS CUYO NOMBRE CONTIENE LA LETRA 'M' O LA DESCRIPCIÓN SEA IGUAL A 0
+select pro.nombre, pro.stock, ven.cantidad from productos pro, ventas ven
+where (pro.nombre like '%m%' and pro.descripcion is null)
+--SUBCONSULTA: OBTENER EL NOMBRE Y STOCK DE LOS PRODUCTOS DONDE EL CÓDIGO DE LOS PRODUCTOS DE LAS VENTAS CORRESPONDE A UNA CANTIDAD 5
+select pro.nombre, pro.stock from productos pro
+where (pro.codigo = any(select codigo_producto from ventas where cantidad=5))

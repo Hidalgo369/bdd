@@ -83,3 +83,15 @@ values (4, 'The Witcher 3: Wild Hunt', 'Juego de rol en tercera persona basado e
 insert into videojuegos (codigo, nombre, descripcion, valoracion) 
 values (5, 'Minecraft', 'Juego de construcción y supervivencia con infinitas posibilidades creativas', 8)
 select * from videojuegos
+
+--EJERCICIO DE CONSULTAS Y SUBCONSULTAS
+--CONSULTA: OBTENER EL NOMBRE, DESCRIPCIÓN, VALORACIÓN Y NOMBRE DE PLATAFORMA DE VIDEOJUEGOS Y PLATAFORMAS CUYA
+--DESCRIPCIÓN CONTIENE 'GUERRA' Y TIENE UNA VALORACIÓN MAYOR A 7 O CUYO NOMBRE COMIENCA CON 'C' Y TIENEN VALORACIÓN
+--MAYOR A 8 Y COMIENZA CON 'D'
+select * from videojuegos vj, plataformas
+where ((vj.descripcion like '%Guerra%') and (vj.valoracion>7)) 
+or ((nombre like 'C%') and (valoracion>8))
+or (nombre like 'D%')
+--SUBCONSULTA: TODOS LOS DATOS DE PLATAFORMAS DONDE PERTENEZCA EL CÓDIGO AL VIDEOJUEGO 'GOD OF WAR'
+select * from plataformas
+where codigo_videojuego = any(select vj.codigo from videojuegos vj where vj.codigo=2)

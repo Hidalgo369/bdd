@@ -65,6 +65,10 @@ insert into transacciones(codigo, numero_cuenta, monto, tipo, fecha, hora)
 values(95124, '74125', 900, 'D', '23/10/2002', '9:00');
 insert into transacciones(codigo, numero_cuenta, monto, tipo, fecha, hora)
 values(54143, '85213', 2000, 'C', '11/09/1999', '7:30');
+update transacciones set numero_cuenta=22002
+where codigo=32548
+update transacciones set numero_cuenta=22004
+where codigo=11
 
 select * from transacciones
 where (tipo='C') 
@@ -110,3 +114,11 @@ values (9, 0009, 'Cambio de clave');
 insert into banco (codigo_banco, codigo_transaccion, detalle) 
 values (10, 0010, 'Solicitud de crédito'); 
 select * from banco
+
+--EJERCICIO DE CONSULTAS Y SUBCONSULTAS
+--CONSULTA: TODAS LAS TRANSACCIONES DE TIPO 'C' CUYO NÚMERO DE CUENTA ESTÉ ENTRE 22001 Y 22004
+select *, codigo_banco, codigo_transaccion, detalle from transacciones, banco
+where ((tipo='C') and (numero_cuenta between '22001' and '22004'))
+--SUBCONSULTA: OBTENER TODOS LOS TRANSACCIONES CUYO CÓDIGO CORRESPONDE AL CÓDIGO DE TRANSACCIÓN DEL BANCO CON CÓDIGO 1
+select * from transacciones
+where codigo = any(select codigo_banco from banco where codigo_banco=1)

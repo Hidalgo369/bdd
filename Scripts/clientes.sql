@@ -47,3 +47,11 @@ values (9, '7788990011', '2024-09-23', 300.30);
 insert into compras (id_compra, cedula, fecha_compra, monto) 
 values (10, '8899001122', '2024-09-24', 45.00);
 select * from compras
+
+--EJERCICIO DE CONSULTAS Y SUBCONSULTAS
+--CONSULTA: NOMBRE Y APPELLIDO DE CLIENTES QUE CONTENGA 7 EN SU CEDULA
+select nombre, apellido from clientes
+where (cedula like '%7%')
+--SUBCONSULTA: CLIENTES CUYA CEDULA SEA IGUAL A LA CEDULA DE NOMBRE MONICA
+select * from clientes
+where (nombre='Mónica')

@@ -100,26 +100,45 @@ insert into empleado (codigo_empleado, nombre, fecha, hora)
 values (004, 'Jorge Ramírez', '2024-09-04', '11:00:00');
 insert into empleado (codigo_empleado, nombre, fecha, hora) 
 values (005, 'Sofía González', '2024-09-05', '09:45:00');
+insert into empleado (codigo_empleado, nombre, fecha, hora) 
+values (2201, 'Fernando Rey', '2024-09-02', '09:45:00');
 select * from empleado
 
-insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
-(1, '1234567890', '2024-09-01', '09:05:00', 001);
-insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
-(2, '2345678901', '2024-09-02', '08:35:00', 002);
-insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
-(3, '3456789012', '2024-09-03', '10:20:00', 003);
-insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
-(4, '4567890123', '2024-09-04', '11:10:00', 004);
-insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
-(5, '5678901234', '2024-09-05', '09:50:00', 005);
-insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
-(6, '1234567890', '2024-09-06', '09:02:00', 001);
-insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
-(7, '2345678901', '2024-09-07', '08:33:00', 002);
-insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
-(8, '3456789012', '2024-09-08', '10:10:00', 003);
-insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
-(9, '4567890123', '2024-09-09', '11:05:00', 004);
-insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) values 
-(10, '5678901234', '2024-09-10', '09:40:00', 005);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) 
+values (1, '1234567890', '2024-09-01', '09:05:00', 001);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) 
+values (2, '2345678901', '2024-09-02', '08:35:00', 002);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) 
+values (3, '3456789012', '2024-09-03', '10:20:00', 003);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) 
+values (4, '4567890123', '2024-09-04', '11:10:00', 004);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) 
+values (5, '5678901234', '2024-09-05', '09:50:00', 005);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) 
+values (6, '1234567890', '2024-09-06', '09:02:00', 001);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) 
+values (7, '2345678901', '2024-09-07', '08:33:00', 002);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) 
+values (8, '3456789012', '2024-09-08', '10:10:00', 003);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) 
+values (9, '4567890123', '2024-09-09', '11:05:00', 004);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) 
+values (10, '5678901234', '2024-09-10', '09:40:00', 005);
+insert into registros_entrada (codigo_registro, cedula_empleado, fecha, hora, codigo_empleado) 
+values (2201, '5678901234', '2024-09-10', '09:40:00', 2201);
 select * from registros_entrada
+
+--EJERCICIO DE CONSULTAS Y SUBCONSULTAS
+--CONSULTA: OBTENER LA CÉDULA DEL EMPLEADO, FECHA Y EL NOMBRE DE LOS EMPLEADOS CUYOS REGISTROS DE ENTRADA TIENEN FECHA
+--ENTRE '2023-08-01' Y '2023-08-31' O CUYA CÉDULA DEL EMPLEADO CONTIENE EL '17%' Y LA HORA DE ENTRADA ESTÁ ENTRE '08:00'
+--Y '12:00' O CUYA FECHA ESTÁ ENTRE '2023-10-06' Y '2023-10-20', LA CÉDILA DEL EMPLEADO CONTIENE '08%' Y LA HORA DE
+--ENTRADA ESTÁ ENTRE '09:00' Y '13:000'
+select re.cedula_empleado, re.fecha, e.nombre from registros_entrada re, empleado e
+where (e.fecha between '2023-08-01' and '2023-08-31') 
+or ((re.cedula_empleado like '17%') and (re.hora between '08:00' and '12:00'))
+or ((e.fecha between '2023-10-06' and '2023-10-23') and (re.cedula_empleado like '08%') 
+and (re.hora between '09:00:00' and '13:00:00'))
+--SUBTOTAL: OBTENER TODOS LOS DATOS DE EMPLEADO DONDE EL CÓDIGO DE REGISTRO DEL EMPLEADO CORRESPONDE AL CÓDIGO DE REGISTRO 
+--DE ENTRADA DE CÉDULA '2201'
+select e.codigo_empleado, e.nombre from empleado e
+where (e.codigo_empleado = any(select re.codigo_registro from registros_entrada re where re.codigo_registro=2201))
