@@ -55,3 +55,12 @@ where (pres.monto between '100' and '1000')
 --SUBCONSULTA: DATOS DE LA PERSONA CUYA CEDULA SEA IGUAL A LA CEDULA DE NOMBRE "SEAN"
 select * from persona
 where nombre='Sean'
+
+--EJERCICIO DE FUNCIONES DE AGREGACIÓN
+--SUMA TOTAL DE LOS MONTOS DE PRÉSTAMOS PARA CADA PERSONA
+select per.cedula, sum(monto) from persona per, prestamo pre
+where per.cedula = pre.cedula
+group by per.cedula
+--CANTIDAD TOTAL DE PERSONAS QUE TIENEN MÁS DE UN HIJO
+select count(*)total_personas from persona
+where numero_hijos>1

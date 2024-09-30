@@ -130,3 +130,9 @@ where (pro.nombre like '%m%' and pro.descripcion is null)
 --SUBCONSULTA: OBTENER EL NOMBRE Y STOCK DE LOS PRODUCTOS DONDE EL CÓDIGO DE LOS PRODUCTOS DE LAS VENTAS CORRESPONDE A UNA CANTIDAD 5
 select pro.nombre, pro.stock from productos pro
 where (pro.codigo = any(select codigo_producto from ventas where cantidad=5))
+
+--EJERCICIO DE FUNCIONES DE AGREGACIÓN
+--MÁXIMO PRECIO DE TODOS LOS PRODUCTOS
+select max(precio)precio_maximo from productos
+--SUMA TOTAL DE LA CANTIDAD DE PRODUCTOS VENDIDOS
+select sum(cantidad) from ventas

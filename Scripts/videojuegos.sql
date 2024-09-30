@@ -95,3 +95,10 @@ or (nombre like 'D%')
 --SUBCONSULTA: TODOS LOS DATOS DE PLATAFORMAS DONDE PERTENEZCA EL CÓDIGO AL VIDEOJUEGO 'GOD OF WAR'
 select * from plataformas
 where codigo_videojuego = any(select vj.codigo from videojuegos vj where vj.codigo=2)
+
+--EJERCICIO DE FUNCIONES DE AGREGACIÓN
+--CANTIDAD TOTAL DE PLATAFORMAS DISPONIBLES PARA CADA VIDEOJUEGO
+select codigo_videojuego, count(*)total_plataformas from plataformas
+group by codigo_videojuego
+--PROMEDIO DE LA VALORACIÓN DE TODOS LOS VIDEOJUEGOS
+select ROUND(AVG(valoracion),2) from videojuegos

@@ -122,3 +122,11 @@ where ((tipo='C') and (numero_cuenta between '22001' and '22004'))
 --SUBCONSULTA: OBTENER TODOS LOS TRANSACCIONES CUYO CÓDIGO CORRESPONDE AL CÓDIGO DE TRANSACCIÓN DEL BANCO CON CÓDIGO 1
 select * from transacciones
 where codigo = any(select codigo_banco from banco where codigo_banco=1)
+
+--EJERCICIO DE FUNCIONES DE AGREGACIÓN
+--CANTIDAD TOTAL DE TRANSACCIONES DE TIPO 'C' (CRÉDITO)
+select count(tipo)total_transacciones_credito from transacciones
+where tipo='C'
+--PROMEDIO DE MONTOS DE TRANSACCIONES PARA CADA NÚMERO DE CUENTA
+select numero_cuenta, cast(AVG(cast(monto as numeric))as money)monto_promedio from transacciones
+group by numero_cuenta

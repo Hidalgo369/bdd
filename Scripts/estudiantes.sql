@@ -124,6 +124,20 @@ insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, c
 values ('9012345678', 'Laura', 'Fernández', 'laura.fernandez@example.com', '1997-09-30', 4);
 insert into estudiantes (cedula, nombre, apellido, email, fecha_de_nacimiento, codigo_profesor) 
 values ('0123456789', 'Jorge', 'González', 'jorge.gonzalez@example.com', '1996-10-05', 5);
+alter table estudiantes
+add column edad int
+update estudiantes set edad = 22 where cedula = '1234567890';
+update estudiantes set edad = 21 where cedula = '2345678901';
+update estudiantes set edad = 25 where cedula = '3456789012';
+update estudiantes set edad = 20 where cedula = '4567890123'; 
+update estudiantes set edad = 19 where cedula = '5678901234'; 
+update estudiantes set edad = 24 where cedula = '6789012345';
+update estudiantes set edad = 23 where cedula = '7890123456'; 
+update estudiantes set edad = 26 where cedula = '8901234567'; 
+update estudiantes set edad = 27 where cedula = '9012345678';  
+update estudiantes set edad = 28 where cedula = '0123456789';  
+
+
 select * from estudiantes
 
 --EJERCICIO DE CONSULTAS Y SUBCONSULTAS
@@ -133,3 +147,10 @@ where (es.apellido like '%ñ%')
 --SUBCONSULTA: ESTUDIANTES CUYO CÓDIGO DE PROFESOR CORRESPONDE AL NOMBRE DE "FRANCISCO"
 select * from estudiantes es
 where (es.codigo_profesor = any(select profe.codigo from profesores profe where profe.nombre='Francisco'))
+
+--EJERCICIO DE FUNCIONES DE AGREGACIÓN
+--CANTIDAD TOTAL DE ESTUDIANTES ASIGNADOS A CADA PROFESOR
+select  codigo_profesor, count(estudiantes)total_estudiantes from estudiantes
+group by codigo_profesor
+---EDAD PROMEDIO DE LOS ESTUDIANTES
+select cast(AVG(EXTRACT(YEAR FROM CURRENT_DATE)-EXTRACT(YEAR FROM fecha_de_nacimiento))as int)edad_promedio from estudiantes

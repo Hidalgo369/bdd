@@ -142,3 +142,10 @@ and (re.hora between '09:00:00' and '13:00:00'))
 --DE ENTRADA DE CÉDULA '2201'
 select e.codigo_empleado, e.nombre from empleado e
 where (e.codigo_empleado = any(select re.codigo_registro from registros_entrada re where re.codigo_registro=2201))
+
+--EJERCICIO DE FUNCIONES DE AGREGACIÓN
+--CANTIDAD TOTAL DE REGISTROS DE ENTRADA REALIZADOS POR CADA EMPLEADO
+select cedula_empleado, count(*) from registros_entrada
+group by cedula_empleado
+--OBTENER LA FECHA MÍNIMA Y MÁXIMA DE REGISTROS DE ENTRADA 
+select min(fecha)fecha_minima, max(fecha)fecha_maxima from registros_entrada

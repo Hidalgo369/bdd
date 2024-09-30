@@ -55,3 +55,13 @@ where (cedula like '%7%')
 --SUBCONSULTA: CLIENTES CUYA CEDULA SEA IGUAL A LA CEDULA DE NOMBRE MONICA
 select * from clientes
 where (nombre='Mónica')
+
+--EJERCICIO DE FUNCIONES DE AGREGACIÓN
+--SUMA DE COMRPAS POR CLIENTE
+select cedula, sum(monto)monto_total_compras from compras
+group by cedula
+
+--CANTIDAD TOTAL DE COMPRAS REALIZADOS EN UNA FECHA ESPECÍFICA
+select fecha_compra, count(monto)total_compras from compras
+where fecha_compra='2024-09-24'
+group by fecha_compra

@@ -77,6 +77,9 @@ create table usuario(
 	limite_credito decimal(10,2),
 	constraint usuario_pk primary key(cedula)
 )
+alter table usuario
+rename column tipo_vuenta to tipo_cuenta
+
 
 alter table cuentas
 alter column cedula_propietario type char(10)
@@ -125,3 +128,13 @@ where (cu.saldo between '100' and '1000')
 --SUBCONSULTA: DATOS DE CUENTAS Y USUARIOS DONDE LA FECHA DE CREACIÓN DE LA CUENTA ESTÁ ENTRE "2022-09-21" y "2023-09-21"
 select cu.numero_cuenta, cu.fecha_creacion, cu.saldo, u.cedula from cuentas cu, usuario u
 where (u.cedula = any(select cu.cedula_propietario from cuentas where cu.fecha_creacion between '2022-09-21' and '2023-09-21'))
+
+--EJERCICIO DE FUNCIONES DE AGREGACIÓN
+--PROMEDIO DE SALDO DE UN USUARIO EN ESPECÍFICO
+select cast(AVG(cast(saldo as numeric))as money)saldo_promedio from cuentas
+where cedula_propietario='1750056789'
+
+--TOTAL DE CUENTAS SEGÚN SU TIPO
+select tipo_cuenta, count(tipo_cuenta)total_cuentas from cuentas, usuario
+WHERE cedula_propietario = cedula
+group by tipo_cuenta
