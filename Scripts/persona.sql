@@ -43,9 +43,8 @@ values ('3456789012', 12000.00, '2024-09-03', '11:15:00', 'Ana García');
 insert into prestamo (cedula, monto, fecha_prestamo, hora_prestamo, garante) 
 values ('4567890123', 5000.00, '2024-09-04', '12:00:00', 'Pedro Ramírez');
 insert into prestamo (cedula, monto, fecha_prestamo, hora_prestamo, garante) 
-values ('5678901234', 20000.00, '2024-09-05', '13:30:00', 'Luis Martínez');
-update prestamo set monto=150
-where (cedula='5678901234')
+values ('5678901234', 150.00, '2024-09-05', '13:30:00', 'Luis Martínez');
+delete from prestamo where cedula = '5678901234'
 select * from prestamo
 
 --EJERCICIO DE CONSULTAS Y SUBCONSULTAS

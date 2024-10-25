@@ -24,6 +24,9 @@ insert into clientes (cedula, nombre, apellido)
 values ('7788990011', 'Jorge', 'García');
 insert into clientes (cedula, nombre, apellido)
 values ('8899001122', 'Sofía', 'Díaz');
+insert into clientes (cedula, nombre, apellido)
+values ('0123456789', 'Cristiano', 'Ronaldo');
+delete from clientes where nombre = 'Cristiano'
 select * from clientes
 
 insert into compras (id_compra, cedula, fecha_compra, monto) 
@@ -46,6 +49,9 @@ insert into compras (id_compra, cedula, fecha_compra, monto)
 values (9, '7788990011', '2024-09-23', 300.30);
 insert into compras (id_compra, cedula, fecha_compra, monto) 
 values (10, '8899001122', '2024-09-24', 45.00);
+insert into compras (id_compra, cedula, fecha_compra, monto) 
+values (100, '0123456789', '2024-10-04', 7000000.00);
+delete from compras where id_compra = 100;
 select * from compras
 
 --EJERCICIO DE CONSULTAS Y SUBCONSULTAS
@@ -65,3 +71,9 @@ group by cedula
 select fecha_compra, count(monto)total_compras from compras
 where fecha_compra='2024-09-24'
 group by fecha_compra
+
+select * from clientes;
+select * from compras;
+
+select c.id_compra, c.fecha_compra, c.monto, cl.cedula, cl.nombre, cl.apellido from compras c, clientes cl
+where (c.cedula = cl.cedula) and (c.id_compra = 1);
